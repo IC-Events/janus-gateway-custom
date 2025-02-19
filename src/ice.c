@@ -3678,7 +3678,8 @@ int janus_ice_setup_local(janus_ice_handle *handle, gboolean offer, gboolean tri
 		}
 	}
 #endif
-	g_object_set(G_OBJECT(handle->agent), "upnp", FALSE, NULL);
+	g_object_set(G_OBJECT(handle->agent), "upnp", TRUE, NULL);
+	g_object_set(G_OBJECT(handle->agent), "upnp_timeout", 5000, NULL);
 	g_object_set(G_OBJECT(handle->agent), "controlling-mode", handle->controlling, NULL);
 	g_signal_connect (G_OBJECT (handle->agent), "candidate-gathering-done",
 		G_CALLBACK (janus_ice_cb_candidate_gathering_done), handle);
